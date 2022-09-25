@@ -20,29 +20,19 @@ const CustomTabView = ({ navigation }) => {
     </Center>
   );
 
-  const FourthRoute = () => (
-    <Center flex={1} my="4">
-      This is Tab 4{" "}
-    </Center>
-  );
-
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     {
       key: "first",
-      title: "Tab 1",
+      title: "Movie",
     },
     {
       key: "second",
-      title: "Tab 2",
+      title: "Search Results",
     },
     {
       key: "third",
-      title: "Tab 3",
-    },
-    {
-      key: "fourth",
-      title: "Tab 4",
+      title: "Tv Shows",
     },
   ]);
 
@@ -50,7 +40,6 @@ const CustomTabView = ({ navigation }) => {
     first: FirstRoute,
     second: SecondRoute,
     third: ThirdRoute,
-    fourth: FourthRoute,
   });
 
   const renderTabBar = (props) => {
