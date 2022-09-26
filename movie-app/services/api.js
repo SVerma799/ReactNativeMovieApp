@@ -42,7 +42,6 @@ export const getSepecificMovie = async (movieId) => {
 export const getTvShowsAsPerType = async (type) => {
   try {
     const url = BASE_URL + "tv/" + type;
-    console.log("URL", url);
     const params = {
       api_key: KEY,
     };
@@ -73,5 +72,25 @@ export const getSepecificTvShow = async (tvID) => {
     return response.data;
   } catch (err) {
     throw err;
+  }
+};
+
+export const getSearchResult = async (type, text) => {
+  const url = BASE_URL + `search/${type}/`;
+
+  // const url = `https://api.themoviedb.org/3/search/${type}?api_key=${KEY}&query=${text}`;
+  try {
+    const params = {
+      api_key: KEY,
+      query: text,
+    };
+    const seachAxios = axios.create({
+      paramsSerializer: (params) =>
+        qs.stringify(params, { arrayFormat: "repeat" }),
+    });
+    const response = await seachAxios.get(url, { params });
+    return response.data;
+  } catch (err) {
+    console.log(err);
   }
 };

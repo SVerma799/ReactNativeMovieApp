@@ -5,15 +5,12 @@ import { Dimensions, Animated, Pressable } from "react-native";
 import { Box, Center, useColorModeValue, View, VStack } from "native-base";
 import MovieContainer from "../containers/MovieContainer";
 import TVShowContainer from "../containers/TVShowContainer";
+import SearchFieldContainer from "../containers/SearchFieldContainer";
 
 const CustomTabView = ({ navigation }) => {
   const FirstRoute = () => <MovieContainer navigation={navigation} />;
 
-  const SecondRoute = () => (
-    <Center flex={1} my="4">
-      This is Tab 2
-    </Center>
-  );
+  const SecondRoute = () => <SearchFieldContainer />;
 
   const ThirdRoute = () => <TVShowContainer navigation={navigation} />;
 

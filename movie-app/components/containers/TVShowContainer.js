@@ -27,7 +27,6 @@ export default function TVShowContainer({ navigation }) {
 
   function getTvShows(type) {
     getTvShowsAsPerType(type).then((res) => {
-      console.log(res);
       setTVList(res);
     });
   }
