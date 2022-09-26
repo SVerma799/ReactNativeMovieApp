@@ -2,8 +2,10 @@ import CustomSelect from "../layout/CustomSelect";
 import React, { useEffect, useState } from "react";
 import MovieList from "../List/MovieList";
 import { getMovies } from "../../services/api";
+import Loading from "../layout/Loading";
+import { Text } from "native-base";
 
-export default function MovieContainer() {
+export default function MovieContainer({ navigation }) {
   const [selectedType, setSelectedType] = useState("now_playing");
   const [mvList, setMVList] = useState([]);
 
@@ -27,7 +29,11 @@ export default function MovieContainer() {
         selectedType={selectedType}
         selectedTypeChange={selectedTypeChange}
       />
-      <MovieList mvList={mvList} />
+      {mvList.length > 0 ? (
+        <MovieList navigation={navigation} mvList={mvList} />
+      ) : (
+        <Loading />
+      )}
     </>
   );
 }

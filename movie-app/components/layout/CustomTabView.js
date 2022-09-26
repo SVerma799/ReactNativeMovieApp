@@ -6,7 +6,7 @@ import { Box, Center, useColorModeValue, View, VStack } from "native-base";
 import MovieContainer from "../containers/MovieContainer";
 
 const CustomTabView = ({ navigation }) => {
-  const FirstRoute = () => <MovieContainer />;
+  const FirstRoute = () => <MovieContainer navigation={navigation} />;
 
   const SecondRoute = () => (
     <Center flex={1} my="4">
