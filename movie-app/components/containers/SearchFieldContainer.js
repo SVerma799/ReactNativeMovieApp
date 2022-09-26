@@ -106,7 +106,11 @@ const SearchContainer = ({ navigation }) => {
         </FormControl>
       </VStack>
       {searchResults.length > 0 ? (
-        <SearchResultList searchResults={searchResults} />
+        <SearchResultList
+          navigation={navigation}
+          selectedType={selectedType}
+          searchResults={searchResults}
+        />
       ) : (
         <Center>
           <Text fontSize="xl" fontWeight="bold">

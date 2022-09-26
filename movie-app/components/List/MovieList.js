@@ -10,16 +10,16 @@ const MovieList = ({ navigation, mvList }) => {
             <VStack px={4}>
               <Image
                 source={{
-                  uri: `https://image.tmdb.org/t/p/original/${mv.poster_path}`,
+                  uri: `https://image.tmdb.org/t/p/original/${mv?.poster_path}`,
                 }}
                 alt="Alternate Text"
                 size="xl"
               ></Image>
             </VStack>
             <VStack>
-              <Text py={1}>{mv.title}</Text>
-              <Text py={1}>{mv.release_date}</Text>
-              <Text py={1}>{mv.popularity}</Text>
+              <Text py={1}>{mv?.title}</Text>
+              <Text py={1}>{mv?.release_date}</Text>
+              <Text py={1}>{mv?.popularity}</Text>
               <Button
                 w="80%"
                 onPress={() => {

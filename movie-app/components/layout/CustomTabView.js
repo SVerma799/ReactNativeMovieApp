@@ -10,7 +10,7 @@ import SearchFieldContainer from "../containers/SearchFieldContainer";
 const CustomTabView = ({ navigation }) => {
   const FirstRoute = () => <MovieContainer navigation={navigation} />;
 
-  const SecondRoute = () => <SearchFieldContainer />;
+  const SecondRoute = () => <SearchFieldContainer navigation={navigation} />;
 
   const ThirdRoute = () => <TVShowContainer navigation={navigation} />;
 

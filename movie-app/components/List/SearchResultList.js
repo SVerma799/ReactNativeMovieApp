@@ -1,10 +1,22 @@
 import React from "react";
 import { Button, HStack, Image, ScrollView, Text, VStack } from "native-base";
+import MovieList from "./MovieList";
 
-export default function SearchResultList({ searchResults }) {
+export default function SearchResultList({
+  navigation,
+  selectedType,
+  searchResults,
+}) {
+  function RenderSelectedType(selectedType) {
+    if (selectedType == "movie") {
+      return <MovieList navigation={navigation} mvList={searchResults} />;
+    }
+  }
+
   return (
     <ScrollView>
-      <VStack>
+      {RenderSelectedType(selectedType)}
+      {/* <VStack>
         {searchResults.map((result) => {
           return (
             <HStack py={3} px={3}>
@@ -24,7 +36,7 @@ export default function SearchResultList({ searchResults }) {
             </HStack>
           );
         })}
-      </VStack>
+      </VStack> */}
     </ScrollView>
   );
 }
