@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, HStack, Image, ScrollView, Text, VStack } from "native-base";
 import MovieList from "./MovieList";
+import TVList from "./TVList";
 
 export default function SearchResultList({
   navigation,
@@ -10,6 +11,9 @@ export default function SearchResultList({
   function RenderSelectedType(selectedType) {
     if (selectedType == "movie") {
       return <MovieList navigation={navigation} mvList={searchResults} />;
+    } else if (selectedType == "tv") {
+      console.log("asdas");
+      return <TVList navigation={navigation} tvList={searchResults} />;
     }
   }
 
