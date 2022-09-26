@@ -26,7 +26,7 @@ const MovieList = ({ navigation, mvList }) => {
                   navigation.navigate("MovieItem", {
                     movieId: mv.id,
                   });
-                  navigation.setOptions({ title: mv.title });
+                  // navigation.setOptions({ title: mv.title });
                 }}
               >
                 More Details

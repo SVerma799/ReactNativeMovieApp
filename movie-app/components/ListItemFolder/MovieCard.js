@@ -2,9 +2,11 @@ import { move } from "formik";
 import { Center, Divider, HStack, Image, Text, VStack } from "native-base";
 import React, { useEffect, useState } from "react";
 import { getSepecificMovie } from "../../services/api";
+import Loading from "../layout/Loading";
 
 export default function MovieCard({ navigation, route }) {
   const movie_id = route.params.movieId;
+  console.log("Movie Card ID: ", movie_id);
   const [movie, setMovie] = useState({});
 
   useEffect(() => {
@@ -16,7 +18,9 @@ export default function MovieCard({ navigation, route }) {
         console.log("Error", err);
       });
   }, []);
-  return (
+  return Object.keys(movie).length == 0 ? (
+    <Loading />
+  ) : (
     <VStack>
       <Center>
         <Text fontSize="4xl" fontWeight="bold" py={6}>
@@ -34,10 +38,10 @@ export default function MovieCard({ navigation, route }) {
           {movie?.overview}{" "}
         </Text>
         <HStack>
-          <Text>Popularity:  </Text>
+          <Text>Popularity: </Text>
           <Text>{movie.popularity}</Text>
           <Divider orientation="vertical" ml={2} mr={2} />
-          <Text>Release Date:  </Text>
+          <Text>Release Date: </Text>
           <Text>{movie.release_date}</Text>
         </HStack>
       </Center>
