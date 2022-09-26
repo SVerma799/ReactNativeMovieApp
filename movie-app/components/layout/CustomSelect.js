@@ -7,8 +7,7 @@ import {
   NativeBaseProvider,
 } from "native-base";
 
-const CustomSelect = ({ selectedType, selectedTypeChange }) => {
-  const filterSetting = ["now_playing", "popular", "top_rated", "upcoming"];
+const CustomSelect = ({ selectedType, selectedTypeChange, filterSettings }) => {
   return (
     <Center py={4}>
       <Select
@@ -21,7 +20,7 @@ const CustomSelect = ({ selectedType, selectedTypeChange }) => {
         mt={1}
         onValueChange={(itemVale) => selectedTypeChange(itemVale)}
       >
-        {filterSetting.map((setting, idx) => {
+        {filterSettings.map((setting, idx) => {
           return <Select.Item key={idx} label={setting} value={setting} />;
         })}
       </Select>

@@ -4,6 +4,7 @@ import { StatusBar } from "expo-status-bar";
 import { Dimensions, Animated, Pressable } from "react-native";
 import { Box, Center, useColorModeValue, View, VStack } from "native-base";
 import MovieContainer from "../containers/MovieContainer";
+import TVShowContainer from "../containers/TVShowContainer";
 
 const CustomTabView = ({ navigation }) => {
   const FirstRoute = () => <MovieContainer navigation={navigation} />;
@@ -14,11 +15,7 @@ const CustomTabView = ({ navigation }) => {
     </Center>
   );
 
-  const ThirdRoute = () => (
-    <Center flex={1} my="4">
-      This is Tab 3
-    </Center>
-  );
+  const ThirdRoute = () => <TVShowContainer navigation={navigation} />;
 
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([

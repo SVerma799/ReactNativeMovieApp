@@ -8,6 +8,7 @@ import { Text } from "native-base";
 export default function MovieContainer({ navigation }) {
   const [selectedType, setSelectedType] = useState("now_playing");
   const [mvList, setMVList] = useState([]);
+  const mvFilterSetting = ["now_playing", "popular", "top_rated", "upcoming"];
 
   useEffect(() => {
     getMovieAsPerType(selectedType);
@@ -28,6 +29,7 @@ export default function MovieContainer({ navigation }) {
       <CustomSelect
         selectedType={selectedType}
         selectedTypeChange={selectedTypeChange}
+        filterSettings={mvFilterSetting}
       />
       {mvList.length > 0 ? (
         <MovieList navigation={navigation} mvList={mvList} />
