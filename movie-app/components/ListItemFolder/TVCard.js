@@ -26,7 +26,7 @@ export default function TVCard({ navigation, route }) {
           source={{
             uri: `https://image.tmdb.org/t/p/original/${tvShow?.poster_path}`,
           }}
-          alt={tvShow?.title}
+          alt={tvShow?.name}
           size="2xl"
           mb={10}
         ></Image>
