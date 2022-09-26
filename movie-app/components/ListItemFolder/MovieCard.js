@@ -1,5 +1,5 @@
 import { move } from "formik";
-import { HStack, Image, Text, VStack } from "native-base";
+import { Center, Divider, HStack, Image, Text, VStack } from "native-base";
 import React, { useEffect, useState } from "react";
 import { getSepecificMovie } from "../../services/api";
 
@@ -18,23 +18,29 @@ export default function MovieCard({ navigation, route }) {
   }, []);
   return (
     <VStack>
-      <Text>{movie?.title}</Text>
-      <Image
-        source={{
-          uri: `https://image.tmdb.org/t/p/original/${movie?.poster_path}`,
-        }}
-        alt={movie?.title}
-        size="xl"
-      ></Image>
-      <Text>{movie?.overview}</Text>
-      <HStack>
-        <Text>Popularity</Text>
-        <Text>{movie.popularity}</Text>
-      </HStack>
-      <HStack>
-        <Text>Release Date</Text>
-        <Text>{movie.release_date}</Text>
-      </HStack>
+      <Center>
+        <Text fontSize="4xl" fontWeight="bold" py={6}>
+          {movie?.title}
+        </Text>
+        <Image
+          source={{
+            uri: `https://image.tmdb.org/t/p/original/${movie?.poster_path}`,
+          }}
+          alt={movie?.title}
+          size="2xl"
+          mb={10}
+        ></Image>
+        <Text px={8} py={4}>
+          {movie?.overview}{" "}
+        </Text>
+        <HStack>
+          <Text>Popularity:  </Text>
+          <Text>{movie.popularity}</Text>
+          <Divider orientation="vertical" ml={2} mr={2} />
+          <Text>Release Date:  </Text>
+          <Text>{movie.release_date}</Text>
+        </HStack>
+      </Center>
     </VStack>
   );
 }
