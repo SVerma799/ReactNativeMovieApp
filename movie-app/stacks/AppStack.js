@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import MovieCard from "../components/ListItemFolder/MovieCard";
-import TVCard from "../components/ListItemFolder/TVCard";
+import MovieCard from "../components/ListItemFolder/Cards/MovieCard";
+import TVCard from "../components/ListItemFolder/Cards/TVCard";
 import IndexScreen from "../screens/IndexScreen";
 
 const Stack = createNativeStackNavigator();

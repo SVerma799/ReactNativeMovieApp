@@ -22,7 +22,6 @@ export const getMovies = async (type) => {
 
 export const getSepecificMovie = async (movieId) => {
   const url = BASE_URL + "movie/" + movieId;
-  console.log(url);
   try {
     const params = {
       api_key: KEY,

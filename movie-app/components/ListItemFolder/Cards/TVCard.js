@@ -1,8 +1,8 @@
 import { move } from "formik";
 import { Center, Divider, HStack, Image, Text, VStack } from "native-base";
 import React, { useEffect, useState } from "react";
-import { getSepecificTvShow } from "../../services/api";
-import Loading from "../layout/Loading";
+import { getSepecificTvShow } from "../../../services/api";
+import Loading from "../../layout/Loading";
 
 export default function TVCard({ navigation, route }) {
   const tvShow_ID = route.params.tvShowId;

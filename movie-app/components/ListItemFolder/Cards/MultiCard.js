@@ -1,12 +1,11 @@
 import { move } from "formik";
 import { Center, Divider, HStack, Image, Text, VStack } from "native-base";
 import React, { useEffect, useState } from "react";
-import { getSepecificMovie } from "../../services/api";
-import Loading from "../layout/Loading";
+import { getSepecificMovie } from "../../../services/api";
+import Loading from "../../layout/Loading";
 
 export default function MovieCard({ navigation, route }) {
   const movie_id = route.params.movieId;
-  console.log("Movie Card ID: ", movie_id);
   const [movie, setMovie] = useState({});
 
   useEffect(() => {
