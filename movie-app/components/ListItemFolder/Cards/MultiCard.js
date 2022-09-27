@@ -34,7 +34,7 @@ export default function MovieCard({ navigation, route }) {
           mb={10}
         ></Image>
         <Text px={8} py={4}>
-          {movie?.overview}{" "}
+          {movie?.overview}
         </Text>
         <HStack>
           <Text>Popularity: </Text>

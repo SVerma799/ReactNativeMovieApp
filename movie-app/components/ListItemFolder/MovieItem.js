@@ -4,13 +4,17 @@ const MovieItem = ({ navigation, ml }) => {
   return (
     <HStack py={4}>
       <VStack px={4}>
-        <Image
-          source={{
-            uri: `https://image.tmdb.org/t/p/original/${ml?.poster_path}`,
-          }}
-          alt="Alternate Text"
-          size="xl"
-        ></Image>
+        {ml.poster_path === null ? (
+          <></>
+        ) : (
+          <Image
+            source={{
+              uri: `https://image.tmdb.org/t/p/original/${ml?.poster_path}`,
+            }}
+            alt={ml.title}
+            size="xl"
+          ></Image>
+        )}
       </VStack>
       <VStack>
         <Text py={1}>{ml?.title}</Text>
