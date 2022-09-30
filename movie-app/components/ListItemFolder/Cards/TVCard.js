@@ -25,6 +25,7 @@ export default function TVCard({ navigation, route }) {
         console.log("Error", err);
       });
   }, []);
+
   return Object.keys(tvShow).length == 0 ? (
     <Loading />
   ) : (
@@ -43,7 +44,16 @@ export default function TVCard({ navigation, route }) {
             mb={10}
           ></Image>
           <Text px={8} py={4}>
-            {tvShow?.overview}
+            {tvShow?.overview == "" ? (
+              <Text>
+                No Info available for
+                <Text fontWeight="bold" fontSize="lg">
+                  {tvShow?.name}
+                </Text>
+              </Text>
+            ) : (
+              tvShow?.overview
+            )}
           </Text>
           <HStack>
             <Text>Popularity: </Text>
