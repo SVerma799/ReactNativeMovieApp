@@ -1,5 +1,5 @@
 import CustomSelect from "../layout/CustomSelect";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Loading from "../layout/Loading";
 import {
   VStack,
@@ -19,29 +19,38 @@ import { getSearchResult } from "../../services/api";
 import SearchResultList from "../List/SearchResultList";
 
 const SearchContainer = ({ navigation }) => {
+  const ref = useRef(null);
   const [selectedType, setSelectedType] = useState("movie");
   const mvFilterSetting = ["movie", "multi", "tv"];
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState({});
+  const [errors, setErrors] = useState({});
 
   function selectedTypeChange(itemValue) {
     setSelectedType(itemValue);
   }
 
   function onSubmit() {
-    getSearchResult(selectedType, searchText)
-      .then((res) => {
-        setSearchResults(res.results);
-      })
-      .catch((err) => {
-        console.log("Error: ", err);
-      });
+    if (searchText == "") {
+      setErrors({ ...errors, name: "Field cannot be left blank" });
+      ref.current.focus();
+      return;
+    } else {
+      setErrors({});
+      getSearchResult(selectedType, searchText)
+        .then((res) => {
+          setSearchResults(res.results);
+        })
+        .catch((err) => {
+          console.log("Error: ", err);
+        });
+    }
   }
 
   return (
     <VStack>
       <VStack width="90%" mx="6" my={6} maxW="300px">
-        <FormControl isRequired>
+        <FormControl isRequired isInvalid={"name" in errors}>
           <FormControl.Label
             _text={{
               bold: true,
@@ -50,16 +59,15 @@ const SearchContainer = ({ navigation }) => {
             Search Movie/TV Show Name
           </FormControl.Label>
           <Input
+            ref={ref}
             placeholder="eg. James Bond, CSI"
             onChangeText={(value) => setSearchText(value)}
           />
-          <FormControl.ErrorMessage
-            _text={{
-              fontSize: "xs",
-            }}
-          >
-            Field cannot be left blank
-          </FormControl.ErrorMessage>
+          {"name" in errors ? (
+            <FormControl.ErrorMessage>{errors.name}</FormControl.ErrorMessage>
+          ) : (
+            ""
+          )}
         </FormControl>
         <FormControl isRequired>
           <FormControl.Label
@@ -96,13 +104,6 @@ const SearchContainer = ({ navigation }) => {
               Search
             </Button>
           </HStack>
-          <FormControl.ErrorMessage
-            _text={{
-              fontSize: "xs",
-            }}
-          >
-            Field cannot be left blank
-          </FormControl.ErrorMessage>
         </FormControl>
       </VStack>
       {searchResults.length > 0 ? (
